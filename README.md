@@ -1,4 +1,4 @@
-# A simple IoT temperature, humidity and pressure sensor for NodeMCU / Lua and submitting measurements by RESTful API.
+# A simple IoT temperature, humidity and pressure sensor for NodeMCU / Lua and submitting measurements by [RESTful API](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
 To use the code, copy init.default.lua to init.lua, and nodevars.default.lua to nodevars.lua and customise the latter to suit your needs.
 
