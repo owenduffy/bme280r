@@ -1,27 +1,27 @@
 -- Remember to connect GPIO16 (D0) and RST for deep sleep function,
 -- better though a SB diode anode to RST cathode to GPIO16 (D0).
 
+print("bme280r")
+
 --# Settings #
 dofile("nodevars.lua")
 --# END settings #
 
 function get_sensor_Data()
   sens_status=bme280.setup(1,1,1,1)
-  if sens_status~=2 then
+  print(sens_status)
+  if sens_status==0 then
      print("Failed BME280 setup.")
   else
     repeat
       temperature,pressure,humidity,qnh=bme280.read(altitude)
-      --temperature=bme280.temp()
     until temperature~=nil and humidity~=nil and pressure~=nil
---    repeat
---      humidity=bme280.humi()
---    until humidity~=nil
     temperature=string.format("%.1f",temperature/100)
     humidity=string.format("%.1f",humidity/1000)
     qnh=string.format("%.1f",qnh/1000)
     print("Temperature: "..temperature.." deg C")
     print("Humidity: "..humidity.."%")
+    print("QNH: "..qnh.." HPa")
   end
 end
 
@@ -62,7 +62,8 @@ function cbhttpdone(code,data)
   else
     print(code,data)
   end
-  tmr.alarm(0,500,tmr.ALARM_SINGLE,cbslp)
+  wsutmr=tmr.create()
+  wsutmr:alarm(500,tmr.ALARM_SINGLE,cbslp)
 end
 
 function cbslp()
