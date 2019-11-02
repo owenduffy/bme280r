@@ -62,8 +62,8 @@ function cbhttpdone(code,data)
   else
     print(code,data)
   end
-  wsutmr=tmr.create()
-  wsutmr:alarm(500,tmr.ALARM_SINGLE,cbslp)
+  rtmr=tmr.create()
+  rtmr:alarm(500,tmr.ALARM_SINGLE,cbslp)
 end
 
 function cbslp()
