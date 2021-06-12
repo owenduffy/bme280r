@@ -8,21 +8,13 @@ dofile("nodevars.lua")
 --# END settings #
 
 function get_sensor_Data()
-  sens_status=bme280.setup(1,1,1,1)
-  print(sens_status)
-  if sens_status==0 then
-     print("Failed BME280 setup.")
-  else
-    repeat
-      temperature,pressure,humidity,qnh=bme280.read(altitude)
-    until temperature~=nil and humidity~=nil and pressure~=nil
-    temperature=string.format("%.1f",temperature/100)
-    humidity=string.format("%.1f",humidity/1000)
-    qnh=string.format("%.1f",qnh/1000)
-    print("Temperature: "..temperature.." deg C")
-    print("Humidity: "..humidity.."%")
-    print("QNH: "..qnh.." HPa")
-  end
+  temperature,pressure,humidity,qnh=s:read(altitude)
+  temperature=string.format("%.1f",temperature)
+  humidity=string.format("%.1f",humidity)
+  qnh=string.format("%.1f",qnh)
+  print("Temperature: "..temperature.." deg C")
+  print("Humidity: "..humidity.."%")
+  print("QNH: "..qnh.." hPa")
 end
 
 function swf()
@@ -76,8 +68,14 @@ temperature = 0
 humidity = 0
 qnh=0
 t1=tmr.create()
-sda,scl=3,4   --D3,D4 GPIO00,GPIO02?
-i2c.setup(0,sda,scl,i2c.SLOW) -- call i2c.setup() only once
-swf()
+i2c.setup(0,pin_sda,pin_scl,i2c.SLOW)
+s=require('bme280').setup(0,nil,nil,nil,nil,nil,BME280_FORCED_MODE)
+--print(s)
+if s==nil then
+  print("Failed BME280 setup.")
+  cbslp()
+else
+  swf()
+end
 -- Watchdog loop, will force deep sleep if the operation somehow takes to long
 tmr.create():alarm(30000,1,function() node.dsleep(meas_period*1000000) end)

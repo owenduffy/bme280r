@@ -9,13 +9,17 @@ The deep sleep function used depends on an external connection which you must ma
 See project described at https://owenduffy.net/blog/?p=13517.
 
 Tested on:
-NodeMCU custom build by frightanic.com
-        branch: master
-        commit: c708828bbe853764b9de58fb8113a70f5a24002d
-        SSL: true
-        modules: adc,bme280,encoder,file,gpio,http,i2c,mqtt,net,node,tmr,uart,wifi,tls
- build created on 2018-10-14 09:22
- powered by Lua 5.1.4 on SDK 2.2.1(6ab97e9)
+NodeMCU 3.0.0.0 built on nodemcu-build.com provided by frightanic.com
+	branch: release
+	commit: d4ae3c364bd8ae3ded8b77d35745b7f07879f5f9
+	release: 
+	release DTS: 202105102018
+	SSL: true
+	build type: float
+	LFS: 0x0 bytes total capacity
+	modules: adc,bit,bme280_math,dht,encoder,file,gpio,http,i2c,mdns,mqtt,net,node,ow,sntp,spi,tmr,uart,wifi,tls
+ build 2021-06-10 08:45 powered by Lua 5.1.4 on SDK 3.0.1-dev(fce080e)
+
 
 
 
