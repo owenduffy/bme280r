@@ -1,5 +1,9 @@
 # A simple IoT temperature, humidity and pressure sensor for NodeMCU / Lua and submitting measurements by [RESTful API](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
+![Block diagram](bme280r01.png "Block diagram")
+
+Above is a block diagram of the system.
+
 To use the code, copy init.default.lua to init.lua, and nodevars.default.lua to nodevars.lua and customise the latter to suit your needs.
 
 Enter your own APIKEY etc as appropriate.
