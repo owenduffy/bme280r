@@ -26,6 +26,7 @@ function swf()
   if client_ip ~= "" then
     wifi.sta.setip({ip=client_ip,netmask=client_netmask,gateway=client_gateway})
   end
+  wifi.sta.sethostname(wifi_hostname)
   wifi.sta.config({ssid=wifi_SSID,pwd=wifi_password})
   print("swf done...")
 end
