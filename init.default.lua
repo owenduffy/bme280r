@@ -8,6 +8,7 @@ cfgdefs={
 "3",
 "60",
 "0",
+"0",
 "",
 "",
 ""
@@ -21,6 +22,7 @@ cfgvars={
 "pin_sda",
 "meas_period",
 "altitude",
+"qnh_offs",
 "rest_url",
 "rest_body",
 "apikey"

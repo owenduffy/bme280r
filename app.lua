@@ -11,6 +11,7 @@ function get_sensor_Data()
   temperature,pressure,humidity,qnh=s:read(altitude)
   temperature=string.format("%.1f",temperature)
   humidity=string.format("%.1f",humidity)
+  qnh=qnh+qnh_offs
   qnh=string.format("%.1f",qnh)
   print("Temperature: "..temperature.." deg C")
   print("Humidity: "..humidity.."%")
